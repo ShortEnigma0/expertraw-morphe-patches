@@ -1,3 +1,9 @@
+## [1.0.3](https://github.com/ShortEnigma0/expertraw-morphe-patches/compare/v1.0.2...v1.0.3) (2026-11-10)
+
+### 🐛 Bug Fixes
+
+* Name the patch bundle Short Enigma Patches ([db39554](https://github.com/ShortEnigma0/expertraw-morphe-patches/commit/db3955414d5ffda7d0d7e3fe28b49ca26978799c))
+
 ## [1.0.2](https://github.com/ShortEnigma0/expertraw-morphe-patches/compare/v1.0.1...v1.0.2) (2026-11-10)
 
 ### 🐛 Bug Fixes
