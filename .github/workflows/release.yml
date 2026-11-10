@@ -19,6 +19,7 @@ on:
       - 'package-lock.json'
       - '.github/scripts/**'
       - '.github/workflows/release.yml'
+      - 'morphe-signing.pub'
 
 jobs:
   release:
@@ -53,6 +54,16 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      # Morphe Manager rejects bundles that aren't signed by the key in morphe-signing.pub.
+      - name: Check signing key
+        env:
+          MORPHE_SIGNING_KEY: ${{ secrets.MORPHE_SIGNING_KEY }}
+        run: |
+          if [ -z "$MORPHE_SIGNING_KEY" ]; then
+            echo "::error::Repository secret MORPHE_SIGNING_KEY is not set; refusing to publish an unsigned bundle."
+            exit 1
+          fi
 
       - name: Release
         uses: cycjimmy/semantic-release-action@v8
