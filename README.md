@@ -1,3 +1,5 @@
+<p align="center"><img src="patches-bundle.png" alt="Short Enigma Patches logo" width="160"/></p>
+
 # Expert RAW Patches
 
 Patches for **Samsung Expert RAW** that add a **Disable post-processing** switch: each shot is captured as **one frame** instead of a multi-frame burst. There's no multi-frame merge or HDR stacking for the RAW (DNG) or the JPEG, and the photo is saved right away (~3 s) without the "Refining image" notification.
