@@ -1,3 +1,9 @@
+## [1.0.2](https://github.com/ShortEnigma0/expertraw-morphe-patches/compare/v1.0.1...v1.0.2) (2026-11-10)
+
+### 🐛 Bug Fixes
+
+* Sign patch bundles with this repository's own key ([365d1d5](https://github.com/ShortEnigma0/expertraw-morphe-patches/commit/365d1d576975beb0b24492082b0113050e3824a5))
+
 ## [1.0.1](https://github.com/ShortEnigma0/expertraw-morphe-patches/compare/v1.0.0...v1.0.1) (2026-11-10)
 
 ### 🐛 Bug Fixes
