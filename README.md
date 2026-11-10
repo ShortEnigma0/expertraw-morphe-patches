@@ -21,7 +21,7 @@ Other versions are rejected. Each patch checks the code it modifies and stops in
 
 ## What you get
 
-- **Settings → Pictures → Disable post-processing**, just above Labs.
+- **Settings → Pictures → Disable post-processing**, just above Labs. **Restart the app after changing it** to apply the change.
 - **Switch on:**
   - single-frame capture in 12 MP, 24 MP and 50 MP modes (`dsCondition 0xAA0001` instead of `0xAA000B`)
   - processed and saved immediately, with no deferred processing and no "Refining image" notification
@@ -43,7 +43,7 @@ The Galaxy Store build is signed with Samsung's platform key, which grants it ab
 ## Morphe patches
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.0.1](https://github.com/ShortEnigma0/expertraw-morphe-patches/releases/tag/v1.0.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;7 patches total
+> **[v1.0.1](https://github.com/ShortEnigma0/expertraw-morphe-patches/releases/tag/v1.0.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;2 patches total
 <details open>
 <summary>📦 Expert RAW&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
@@ -57,20 +57,6 @@ The Galaxy Store build is signed with Samsung's platform key, which grants it ab
 |----------|----------------|-----------|
 | [Disable post-processing](#disable-post-processing) | Adds Settings > Pictures > "Disable post-processing". When on, each shot is a single frame instead of a multi-frame burst (no multi-frame merge or HDR stacking for RAW and JPEG), saved right away without the "Refining image" notification. Lab modes are unchanged. |  |
 | [Samsung signature compatibility](#samsung-signature-compatibility) | Lets a re-signed Expert RAW run on a stock Galaxy: calls that need Samsung's platform signature are made safe, private storage under /data/sec is moved to app storage and Samsung's private media provider is emulated with MediaStore. Voice shutter and volume-key shutter stop working. |  |
-
-</details>
-
-<details open>
-<summary>🌐 Universal&nbsp;&nbsp;•&nbsp;&nbsp;5 patches</summary>
-<br>
-
-| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
-|----------|----------------|-----------|
-| [Change installer source](#change-installer-source) | Spoofs the installer source so the app appears to be installed from an app store. | • Spoofed package installer name |
-| [Clone app](#clone-app) | Changes the app package name to allow installing the same app multiple times. By default ".morphe" is appended to the package name. Each cloned install must use a unique package name. Cloning does not work with all apps and using this patch may cause app crashes or other unexpected behavior. | • Package name<br>• Update permissions<br>• Update providers |
-| [Disable Play Store updates](#disable-play-store-updates) | Disables Play Store updates by setting the version code to the maximum allowed. This patch may cause unexpected issues with some apps and does not work if the app is installed by root mounting |  |
-| [Override certificate pinning](#override-certificate-pinning) | Overrides certificate pinning, allowing to inspect traffic via a proxy. |  |
-| [Spoof signature](#spoof-signature) | Spoofs the package signature of the original APK. |  |
 
 </details>
 
@@ -100,7 +86,7 @@ adb install -r --user 0 patched.apk
 adb shell appops set --user 0 com.samsung.android.app.galaxyraw MANAGE_EXTERNAL_STORAGE allow
 ```
 
-Open Expert RAW, allow the permissions it asks for, then turn on **Settings → Pictures → Disable post-processing**. Photos are saved to `DCIM/Expert RAW/`. To check it's working:
+Open Expert RAW, allow the permissions it asks for, then turn on **Settings → Pictures → Disable post-processing** and restart the app. Photos are saved to `DCIM/Expert RAW/`. To check it's working:
 
 ```bash
 adb logcat -s GrawMod
