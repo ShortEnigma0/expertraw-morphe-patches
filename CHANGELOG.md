@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/ShortEnigma0/expertraw-morphe-patches/compare/v1.0.0...v1.0.1) (2026-11-10)
+
+### 🐛 Bug Fixes
+
+* **Disable post-processing:** Mention restarting the app in the switch description ([986c6fc](https://github.com/ShortEnigma0/expertraw-morphe-patches/commit/986c6fce7d0bf482a18af9d1db6ca5b042dd0ba3))
+
 ## 1.0.0 (2026-11-10)
 
 ### ⚠ BREAKING CHANGES

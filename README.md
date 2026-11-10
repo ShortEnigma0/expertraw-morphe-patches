@@ -43,7 +43,7 @@ The Galaxy Store build is signed with Samsung's platform key, which grants it ab
 ## Morphe patches
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.0.0](https://github.com/ShortEnigma0/expertraw-morphe-patches/releases/tag/v1.0.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;7 patches total
+> **[v1.0.1](https://github.com/ShortEnigma0/expertraw-morphe-patches/releases/tag/v1.0.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;7 patches total
 <details open>
 <summary>📦 Expert RAW&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
