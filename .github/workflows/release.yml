@@ -6,12 +6,19 @@ on:
     branches:
       - main
     paths:
-      - 'patches/src/**'
-      - 'patches/build.gradle.kts'
+      # Anything that changes the built patch bundle
+      - 'patches/**'
       - 'extensions/**'
       - 'build.gradle.kts'
       - 'settings.gradle.kts'
-      - 'gradle/libs.versions.toml'
+      - 'gradle/**'
+      - 'gradle.properties'
+      # Release tooling
+      - '.releaserc'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/scripts/**'
+      - '.github/workflows/release.yml'
 
 jobs:
   release:
