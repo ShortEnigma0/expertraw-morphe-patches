@@ -165,7 +165,7 @@ val disablePostProcessingPatch = patch(
             resources.appendChild("string") {
                 setAttribute("name", "mod_disable_pp_summary")
                 text = "Capture a single frame instead of a multi-frame burst. " +
-                    "Skips multi-frame merge/HDR stacking for RAW and JPEG."
+                    "Skips multi-frame merge/HDR stacking for RAW and JPEG. Restart the app to apply changes."
             }
         }
 

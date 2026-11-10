@@ -168,7 +168,7 @@ def p_settings_ui(root):
     if "mod_disable_pp_title" not in s:
         add = ('    <string name="mod_disable_pp_title">Disable post-processing</string>\n'
                '    <string name="mod_disable_pp_summary">Capture a single frame instead of a multi-frame burst. '
-               'Skips multi-frame merge/HDR stacking for RAW and JPEG.</string>\n</resources>\n')
+               'Skips multi-frame merge/HDR stacking for RAW and JPEG. Restart the app to apply changes.</string>\n</resources>\n')
         s = s.rstrip()
         if not s.endswith("</resources>"):
             raise PatchError("strings.xml: unexpected ending")
