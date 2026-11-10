@@ -5,6 +5,13 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'patches/src/**'
+      - 'patches/build.gradle.kts'
+      - 'extensions/**'
+      - 'build.gradle.kts'
+      - 'settings.gradle.kts'
+      - 'gradle/libs.versions.toml'
 
 jobs:
   release:

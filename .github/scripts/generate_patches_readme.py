@@ -66,9 +66,8 @@ universal = {}
 for patch in data["patches"]:
     cp = patch.get("compatiblePackages")
     if not cp:
-        # Deduplicate universal patches by name
-        if patch["name"] not in universal:
-            universal[patch["name"]] = patch
+        # This fork lists only its app-specific (Expert RAW) patches; the universal
+        # patches stay in the bundle but are not shown in the README.
         continue
     for pkg_entry in cp:
         pkg  = pkg_entry["packageName"]
