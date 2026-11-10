@@ -88,6 +88,8 @@ private val CALL_REWRITES: Map<String, String> = buildMap {
     )
     // Current user needs INTERACT_ACROSS_USERS; the camera only ever runs as its own user.
     put("Landroid/app/ActivityManager;->semGetCurrentUser()I", "Landroid/os/UserHandle;->semGetMyUserId()I")
+    // App permission gate checks Environment.isExternalStorageManager() -> return true so GalaxyRaw reaches onResume.
+    static("Landroid/os/Environment;", "isExternalStorageManager()Z", SAFE_SYS)
 }
 
 private const val DATA_SEC_ROOT = "/data/user/0/com.samsung.android.app.galaxyraw/files/sec"

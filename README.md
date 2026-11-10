@@ -23,7 +23,7 @@ Other versions are rejected. Each patch checks the code it modifies and stops in
 
 ## What you get
 
-- **Settings → Pictures → Disable post-processing**, just above Labs. **Restart the app after changing it** to apply the change.
+- **Settings → Pictures → Disable post-processing**, just above Labs. Toggling the switch prompts to restart the app immediately with a matching confirmation dialog.
 - **Switch on:**
   - single-frame capture in 12 MP, 24 MP and 50 MP modes (`dsCondition 0xAA0001` instead of `0xAA000B`)
   - processed and saved immediately, with no deferred processing and no "Refining image" notification
@@ -85,10 +85,15 @@ Signatures differ from the Store version, so it has to be removed first. That al
 ```bash
 adb uninstall com.samsung.android.app.galaxyraw
 adb install -r --user 0 patched.apk
-adb shell appops set --user 0 com.samsung.android.app.galaxyraw MANAGE_EXTERNAL_STORAGE allow
 ```
 
-Open Expert RAW, allow the permissions it asks for, then turn on **Settings → Pictures → Disable post-processing** and restart the app. Photos are saved to `DCIM/Expert RAW/`. To check it's working:
+*(You can also install the APK directly on your phone using Morphe Manager or a file manager).*
+
+1. Open Expert RAW and grant the requested permissions (Camera, Microphone, etc.).
+2. The app will prompt to grant **"Allow access to manage all files"** (required to save DNG and JPEG files directly to `DCIM/Expert RAW/`). Toggle it **ON** and press **Back** (no ADB command required).
+3. Turn on **Settings → Pictures → Disable post-processing** and tap **Restart** on the confirmation dialog.
+
+Photos are saved to `DCIM/Expert RAW/`. To check it's working:
 
 ```bash
 adb logcat -s GrawMod

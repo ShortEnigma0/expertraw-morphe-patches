@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: GPL-3.0-only
-# Copyright (C) 2026 ShortEnigma0
-# Part of expertraw-morphe-patches standalone patcher. See LICENSE in the repository root.
 .class public final synthetic Lcom/samsung/android/app/galaxyraw/mod/PpRefresh$0;
 .super Ljava/lang/Object;
 .source "D8$$SyntheticClass"

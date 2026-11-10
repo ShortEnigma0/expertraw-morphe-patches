@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: GPL-3.0-only
-# Copyright (C) 2026 ShortEnigma0
-# Part of expertraw-morphe-patches standalone patcher. See LICENSE in the repository root.
 .class public final Lcom/samsung/android/app/galaxyraw/mod/PpImmediate;
 .super Ljava/lang/Object;
 .source "PpImmediate.java"
@@ -14,7 +11,7 @@
 .method private constructor <init>()V
     .registers 1
 
-    .line 15
+    .line 20
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -23,23 +20,23 @@
 .method public static processNow(Lcom/samsung/android/app/galaxyraw/core2/processor/request/ProcessRequestImpl;)Z
     .registers 4
 
-    .line 18
+    .line 23
     nop
 
-    .line 19
+    .line 24
     const/4 v0, 0x0
 
     if-eqz p0, :cond_18
 
-    .line 20
+    .line 25
     invoke-virtual {p0}, Lcom/samsung/android/app/galaxyraw/core2/processor/request/ProcessRequestImpl;->getDsCondition()I
 
     move-result p0
 
-    .line 21
+    .line 26
     ushr-int/lit8 v1, p0, 0x10
 
-    .line 22
+    .line 27
     const/16 v2, 0xaa
 
     if-eq v1, v2, :cond_12
@@ -57,7 +54,7 @@
 
     move v0, v1
 
-    .line 24
+    .line 29
     :cond_18
     sget-boolean p0, Lcom/samsung/android/app/galaxyraw/mod/PpImmediate;->quiet:Z
 
@@ -85,11 +82,11 @@
 
     invoke-static {v1, p0}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 25
+    .line 30
     :cond_34
     sput-boolean v0, Lcom/samsung/android/app/galaxyraw/mod/PpImmediate;->quiet:Z
 
-    .line 26
+    .line 31
     return v0
 .end method
 
@@ -103,7 +100,7 @@
         }
     .end annotation
 
-    .line 31
+    .line 36
     sget-boolean v0, Lcom/samsung/android/app/galaxyraw/mod/PpImmediate;->quiet:Z
 
     const/4 v1, 0x0
@@ -114,13 +111,13 @@
 
     goto :goto_1e
 
-    .line 32
+    .line 37
     :cond_8
     invoke-virtual {p0}, Ljava/lang/Enum;->name()Ljava/lang/String;
 
     move-result-object p0
 
-    .line 33
+    .line 38
     const-string v0, "START_FOREGROUND"
 
     invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -143,7 +140,7 @@
     :cond_1d
     return v1
 
-    .line 31
+    .line 36
     :cond_1e
     :goto_1e
     return v1

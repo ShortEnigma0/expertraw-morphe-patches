@@ -4,6 +4,7 @@ Adds a **Settings → Pictures → Disable post-processing** switch to Samsung E
 With it on, each shot is captured as **one frame** instead of a multi-frame burst (no multi-frame
 merge or HDR stacking for the RAW or the JPEG). The photo is processed and saved right away
 (~3 s), with no "Refining image" notification. The camera thumbnail opens it in Gallery.
+Toggling the switch prompts to restart the app immediately with a matching confirmation dialog.
 
 Lab modes (ND filter, Astrophoto, Multiple exposure…) and shots with the switch off behave as stock.
 
@@ -45,11 +46,16 @@ The patched app is signed with your key, not Samsung's, so it can't update the G
 ```bash
 adb uninstall com.samsung.android.app.galaxyraw        # removes the Store version (and its settings)
 adb install -r --user 0 ExpertRAW-noPP-6.0.02.8.apk
-adb shell appops set --user 0 com.samsung.android.app.galaxyraw MANAGE_EXTERNAL_STORAGE allow
 ```
 
-Open Expert RAW, allow the permissions it asks for, then turn on
-**Settings → Pictures → Disable post-processing**. Photos go to `DCIM/Expert RAW/`.
+*(You can also transfer the APK to your phone and install it directly via a file manager).*
+
+1. Open Expert RAW and allow the requested permissions (Camera, Microphone, etc.).
+2. The app will automatically prompt to grant **"Allow access to manage all files"** (required to save DNG and JPEG files directly to `DCIM/Expert RAW/`). Toggle it **ON** and press **Back** (no ADB command required).
+   *(Optional: If installing via ADB script, you can pre-grant it via `adb shell appops set --user 0 com.samsung.android.app.galaxyraw MANAGE_EXTERNAL_STORAGE allow`).*
+3. Go to **Settings → Pictures → Disable post-processing**. When changed, a matching dialog will ask if you want to restart the app now—tap **Restart** to apply immediately.
+
+Photos go to `DCIM/Expert RAW/`.
 
 Check it's working (optional):
 

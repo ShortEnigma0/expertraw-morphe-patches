@@ -35,6 +35,10 @@ import java.util.concurrent.Executor;
 public final class SafeSys {
     private SafeSys() {}
 
+    public static boolean isExternalStorageManager() {
+        return true;
+    }
+
     private static void denied(String what) {
         Log.w(PpBypass.TAG, "SafeSys denied: " + what);
     }

@@ -62,6 +62,8 @@ With Morphe CLI or Morphe Manager, select the `.mpp`, input `Expert RAW 6.0.02.8
 the two patches above. Then install (the Store version must be uninstalled first, since the signatures differ):
 
 ```bash
+adb uninstall com.samsung.android.app.galaxyraw
 adb install -r --user 0 patched.apk
-adb shell appops set --user 0 com.samsung.android.app.galaxyraw MANAGE_EXTERNAL_STORAGE allow
 ```
+
+On first launch, grant runtime permissions and toggle ON the **"All files access"** prompt to allow saving photos to `DCIM/Expert RAW/` (no ADB command required). In Settings, toggling **Disable post-processing** prompts to restart the app immediately.

@@ -193,6 +193,15 @@ def p_signature_compat(root):
     if s2 != s:
         write(p, s2)
         log("patched PermissionUtils (MANAGE_EXTERNAL_STORAGE)")
+    # App code startup gate checks Environment.isExternalStorageManager() -> bypass so GalaxyRaw reaches onResume.
+    for cls in [f"{APP}/util/PermissionUtils", f"{APP}/RequestPermissionActivity"]:
+        p_cls = find_class(root, cls)
+        s_cls = read(p_cls)
+        s_cls2 = re.sub(r'invoke-static\s*\{\},\s*Landroid/os/Environment;->isExternalStorageManager\(\)Z\s+move-result\s+([vp]\d+)',
+                        r'const/4 \1, 0x1', s_cls)
+        if s_cls2 != s_cls:
+            write(p_cls, s_cls2)
+            log(f"patched {cls} (isExternalStorageManager)")
     # GPPM (Gallery post-processing manager) is unreachable -> report disabled. Class is obfuscated; find by string.
     hits = [f for f in glob.glob(os.path.join(root, "smali*", "**", "*.smali"), recursive=True)
             if '"ENABLE_GPPM"' in read(f)]
@@ -421,10 +430,10 @@ def main():
         print("""
 Next steps (see README.md):
   1. Uninstall the Galaxy Store version of Expert RAW (signatures differ).
-  2. adb install -r --user 0 "{0}"
-  3. adb shell appops set --user 0 {1} MANAGE_EXTERNAL_STORAGE allow
-  4. Open the app, allow its permissions, then Settings -> Pictures -> Disable post-processing.
-""".format(out, PKG))
+  2. Install "{0}" (adb install -r --user 0 "{0}" or install directly on device).
+  3. Open the app, allow permissions, and toggle ON "All files access" when prompted.
+  4. Go to Settings -> Pictures -> Disable post-processing (confirm the restart prompt).
+""".format(out))
     finally:
         if args.keep_work:
             log(f"work dir kept: {work}")

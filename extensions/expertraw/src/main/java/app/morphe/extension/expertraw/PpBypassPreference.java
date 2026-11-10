@@ -5,8 +5,11 @@
  */
 package app.morphe.extension.expertraw;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
+import android.util.Log;
 import com.samsung.android.app.galaxyraw.setting.CameraSwitchPreference;
 
 /**
@@ -15,6 +18,8 @@ import com.samsung.android.app.galaxyraw.setting.CameraSwitchPreference;
  */
 @SuppressWarnings("unused")
 public class PpBypassPreference extends CameraSwitchPreference {
+    private boolean mAttached = false;
+
     public PpBypassPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -23,18 +28,60 @@ public class PpBypassPreference extends CameraSwitchPreference {
     public void onAttached() {
         super.onAttached();
         super.setChecked(PpBypass.isEnabled(getContext()));
+        mAttached = true;
     }
 
     @Override
     public void setChecked(boolean checked) {
+        boolean old = PpBypass.isEnabled(getContext());
         super.setChecked(checked);
-        PpBypass.set(getContext(), checked);
+        if (mAttached && old != checked) {
+            PpBypass.set(getContext(), checked);
+            showRestartDialog();
+        }
     }
 
     @Override
     public boolean callChangeListener(Object newValue) {
-        if (newValue instanceof Boolean) PpBypass.set(getContext(), (Boolean) newValue);
+        if (newValue instanceof Boolean) {
+            boolean checked = (Boolean) newValue;
+            boolean old = PpBypass.isEnabled(getContext());
+            if (mAttached && old != checked) {
+                PpBypass.set(getContext(), checked);
+                showRestartDialog();
+            }
+        }
         return true;
+    }
+
+    private void showRestartDialog() {
+        final Context context = getContext();
+        if (context == null) return;
+        try {
+            new AlertDialog.Builder(context)
+                .setTitle("Restart Expert RAW")
+                .setMessage("Restart the app to apply changes?")
+                .setPositiveButton("Restart", (dialog, which) -> restartApp(context))
+                .setNegativeButton("Later", null)
+                .show();
+        } catch (Throwable t) {
+            Log.w(PpBypass.TAG, "Could not show restart dialog: " + t);
+        }
+    }
+
+    private static void restartApp(Context context) {
+        try {
+            String packageName = context.getPackageName();
+            Intent intent = context.getPackageManager().getLaunchIntentForPackage(packageName);
+            if (intent != null) {
+                Intent restartIntent = Intent.makeRestartActivityTask(intent.getComponent());
+                restartIntent.setPackage(packageName);
+                context.startActivity(restartIntent);
+                Runtime.getRuntime().exit(0);
+            }
+        } catch (Throwable t) {
+            Log.w(PpBypass.TAG, "restartApp failed: " + t);
+        }
     }
 
     @Override
