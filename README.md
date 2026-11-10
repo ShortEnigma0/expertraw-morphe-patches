@@ -1,6 +1,7 @@
 > **This fork:** trimmed to the core Morphe patches plus **Samsung Expert RAW** patches
 > ("Disable post-processing" + "Samsung signature compatibility"). YouTube, YouTube Music and Reddit
 > were removed. See [EXPERTRAW.md](EXPERTRAW.md).
+> A standalone Python patcher (no Morphe needed) is in [standalone-patcher/](standalone-patcher/).
 
 <div align="center"> 
 <picture>
