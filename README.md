@@ -36,10 +36,8 @@ Samsung's native library still turns the single frame into the DNG and the JPEG 
 
 The Galaxy Store build is signed with Samsung's platform key, which grants it about 50 system permissions. A patched, re-signed APK can't get those. The **Samsung signature compatibility** patch works around each one, but these don't survive:
 
-- voice shutter commands ("Smile", "Capture"…)
-- volume-key shutter (likely)
 - Gallery's "Processing…" placeholder (photos appear once finished)
-- camera cutout setting, call-state handling
+- camera cutout setting, call-state handling (Not sure)
 - Galaxy Store updates
 
 ## Morphe patches
