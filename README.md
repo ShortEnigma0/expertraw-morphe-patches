@@ -43,6 +43,36 @@ The Galaxy Store build is signed with Samsung's platform key, which grants it ab
 ## Morphe patches
 
 <!-- PATCHES_START EXPANDED -->
+> **[v1.0.0](https://github.com/ShortEnigma0/expertraw-morphe-patches/releases/tag/v1.0.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;7 patches total
+<details open>
+<summary>📦 Expert RAW&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 6.0.02.8 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Disable post-processing](#disable-post-processing) | Adds Settings > Pictures > "Disable post-processing". When on, each shot is a single frame instead of a multi-frame burst (no multi-frame merge or HDR stacking for RAW and JPEG), saved right away without the "Refining image" notification. Lab modes are unchanged. |  |
+| [Samsung signature compatibility](#samsung-signature-compatibility) | Lets a re-signed Expert RAW run on a stock Galaxy: calls that need Samsung's platform signature are made safe, private storage under /data/sec is moved to app storage and Samsung's private media provider is emulated with MediaStore. Voice shutter and volume-key shutter stop working. |  |
+
+</details>
+
+<details open>
+<summary>🌐 Universal&nbsp;&nbsp;•&nbsp;&nbsp;5 patches</summary>
+<br>
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Change installer source](#change-installer-source) | Spoofs the installer source so the app appears to be installed from an app store. | • Spoofed package installer name |
+| [Clone app](#clone-app) | Changes the app package name to allow installing the same app multiple times. By default ".morphe" is appended to the package name. Each cloned install must use a unique package name. Cloning does not work with all apps and using this patch may cause app crashes or other unexpected behavior. | • Package name<br>• Update permissions<br>• Update providers |
+| [Disable Play Store updates](#disable-play-store-updates) | Disables Play Store updates by setting the version code to the maximum allowed. This patch may cause unexpected issues with some apps and does not work if the app is installed by root mounting |  |
+| [Override certificate pinning](#override-certificate-pinning) | Overrides certificate pinning, allowing to inspect traffic via a proxy. |  |
+| [Spoof signature](#spoof-signature) | Spoofs the package signature of the original APK. |  |
+
+</details>
 
 <!-- PATCHES_END -->
 
