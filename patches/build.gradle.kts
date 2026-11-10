@@ -4,12 +4,12 @@ group = "app.morphe"
 
 patches {
     about {
-        name = "Morphe Patches"
-        description = "Patches for Morphe"
-        source = "git@github.com:MorpheApp/morphe-patches.git"
-        author = "MorpheApp"
-        contact = "na"
-        website = "https://morphe.software"
+        name = "Short Enigma Patches"
+        description = "Samsung Expert RAW patches for Morphe"
+        source = "git@github.com:ShortEnigma0/expertraw-morphe-patches.git"
+        author = "ShortEnigma0"
+        contact = "https://github.com/ShortEnigma0/expertraw-morphe-patches/issues"
+        website = "https://github.com/ShortEnigma0/expertraw-morphe-patches"
         license = "GNU General Public License v3.0, with additional GPL section 7 requirements"
     }
 }
