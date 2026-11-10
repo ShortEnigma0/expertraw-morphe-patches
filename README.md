@@ -8,7 +8,7 @@ Two ways to apply it:
 
 | | What it is | Status |
 |---|---|---|
-| **[Morphe patches](#morphe-patches)** | Patch bundle (`.mpp`) for Morphe Manager / Morphe CLI | Builds; on-device test pending |
+| **[Morphe patches](#morphe-patches)** | Patch bundle (`.mpp`) for Morphe Manager / Morphe CLI | Tested on a Galaxy S23 |
 | **[Standalone patcher](standalone-patcher/)** | `python3 patch.py ExpertRAW.apk` — no Morphe needed | Tested on a Galaxy S23 |
 
 This repository is a fork of [Morphe Patches](https://github.com/MorpheApp/morphe-patches), trimmed to the core
@@ -33,7 +33,9 @@ Other versions are rejected. Each patch checks the code it modifies and stops in
 - **Switch off and Lab modes** (ND filter, Astrophoto, Multiple exposure…): stock behaviour.
 
 Samsung's native library still turns the single frame into the DNG and the JPEG (demosaic, tone mapping, possibly
-single-frame noise reduction). What the switch removes is the multi-frame stacking.
+single-frame noise reduction). What the switch removes is the multi-frame stacking. How long that takes depends on
+the scene: ~3 s in good light, ~9 s in low light, where the library picks its AI low-light mode
+(`MODE_GRAW_AI_ISP_LOWLIGHT_WIDE`).
 
 ## What you lose
 
@@ -59,7 +61,14 @@ Build the bundle (details and the no-token setup in [EXPERTRAW.md](EXPERTRAW.md)
 GITHUB_ACTOR=local GITHUB_TOKEN=unused ./gradlew :patches:buildAndroid   # -> patches/build/libs/patches-<version>.mpp
 ```
 
-Then apply it with Morphe Manager or Morphe CLI to the Expert RAW 6.0.02.8 APK, enabling both patches.
+Then apply it to the Expert RAW 6.0.02.8 APK with Morphe Manager, or with the Morphe CLI
+([morphe-desktop](https://github.com/MorpheApp/morphe-desktop/releases)):
+
+```bash
+java -jar morphe-desktop-2.1.1-all.jar patch -p patches-2.1.0.mpp \
+  -e "Disable post-processing" -e "Samsung signature compatibility" --exclusive \
+  -o ExpertRAW-patched.apk ExpertRAW-6.0.02.8.apk
+```
 
 ## Install
 

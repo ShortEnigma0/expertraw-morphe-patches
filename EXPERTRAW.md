@@ -1,7 +1,7 @@
 # Expert RAW patches (Morphe)
 
 Morphe patches for Samsung Expert RAW **6.0.02.8**.
-**Status: builds (`patches-2.1.0.mpp`); on-device test of the Morphe-patched APK pending.**
+**Status: tested.** `patches-2.1.0.mpp` applied with morphe-desktop 2.1.1 CLI; on a Galaxy S23 the patched APK captures one frame (`dsCondition 0xAA0001`), saves DNG + JPEG immediately and refreshes the thumbnail.
 
 ## Patches
 
