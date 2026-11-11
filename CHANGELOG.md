@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/ShortEnigma0/expertraw-morphe-patches/compare/v1.0.3...v1.1.0) (2026-11-11)
+
+### ✨ New Features
+
+* **expertraw:** auto-prompt for storage permission and confirm app restart on toggle ([99eb954](https://github.com/ShortEnigma0/expertraw-morphe-patches/commit/99eb95494fcefdcd5d6ffa1ca0cfc76ac34be344))
+* Strip universal patches and bump version to 1.0.4 ([c906738](https://github.com/ShortEnigma0/expertraw-morphe-patches/commit/c9067386b27623f9167529e6189d2c29e56c6838))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
