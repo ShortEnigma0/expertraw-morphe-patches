@@ -16,6 +16,7 @@ All notable changes to this project will be documented in this file.
 * Strip universal and unused patches and resources to minimize bundle size
 * Add runtime "All files access" storage permission prompt without requiring manual ADB command
 * Add One UI restart app confirmation dialog when toggling "Disable post-processing"
+* Add comprehensive DMCA compliance policy, trademark notices, and legal disclaimers
 
 ## [1.0.3](https://github.com/ShortEnigma0/expertraw-morphe-patches/compare/v1.0.2...v1.0.3) (2026-11-10)
 
